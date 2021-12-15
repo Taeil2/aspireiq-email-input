@@ -1,18 +1,29 @@
 import Autocomplete from './../Autocomplete';
-import styled from 'styled-components'
+import { execSync } from 'child_process';
+import { isAnyArrayBuffer } from 'util/types';
+import styled from 'styled-components';
+import { useState } from 'react';
 
-const Input = styled.input`
-  background: #fdfdfd;
-  border-radius: 8px;
-  box-shadow: 0px 10px 3px rgb(0 0 0 / 2%);
-  padding: 20px;
+const TextInputWrapper = styled.div`
+  display: inline-block;
+  position: relative;
+  input {
+    border: 0;
+  }
 `
 
-const TextInput = () => {
-  return <div>
-      <Input type="text" placeholder='Enter recipients...' />
-      <Autocomplete />
-    </div>
+interface TextInputProps {
+  entries: [string, boolean][];
+  setEntries: any;
+}
+
+const TextInput = ({ entries, setEntries }: TextInputProps) => {
+  const [ value, setValue ] = useState<string>('');
+
+  return <TextInputWrapper>
+      <input type="text" value={value} onChange={(e) => setValue(e.target.value)} placeholder='Enter recipients...' />
+      <Autocomplete search={value} entries={entries} setEntries={setEntries} />
+    </TextInputWrapper>
 }
 
 export default TextInput;
