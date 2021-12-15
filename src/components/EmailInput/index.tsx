@@ -1,6 +1,7 @@
 import InputBox from './../InputBox';
 import Tag from './../Tag';
 import styled from 'styled-components';
+import { useState } from 'react';
 
 const EmailInputDiv = styled.div`
   background: #fdfdfd;
@@ -10,7 +11,18 @@ const EmailInputDiv = styled.div`
 `
 
 const EmailInput = () => {
-  return <EmailInputDiv>Enter Recipients <InputBox /><Tag /></EmailInputDiv>
+  const [ entries, setEntries ] = useState([['theresa@outlook.com', true], ['another', true], ['wrong', false]]);
+
+  return <EmailInputDiv>
+      {entries.map((entry, index) => {
+        if (entry[1]) {
+          return <Tag name={entry[0]} index={index} />
+        } else {
+          return <Tag name={entry[0]} index={index} valid={false} />
+        }
+      })}
+      <InputBox />
+    </EmailInputDiv>;
 }
 
 export default EmailInput;
