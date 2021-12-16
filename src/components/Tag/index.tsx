@@ -1,21 +1,23 @@
 import { ReactComponent as CloseSvg } from './../../assets/close.svg';
 import { ReactComponent as ErrorCircleSvg } from './../../assets/error-circle.svg';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const StyledTag = styled.div`
-  display: inline-block;
+  display: flex;
   font-weight: 700;
   font-size: 14px;
   cursor: default;
   padding: 5px 8px;
   border-radius: 6px;
-  margin-right: 2px;
   position: relative;
   padding-right: 25px;
   line-height: 1em;
+  margin: 14px 0;
+  margin-right: 2px;
 
   .close-icon {
-    /* display: none; */
+    display: inline-block;
+    visibility: hidden;
     position: absolute;
     right: 8px;
     top: 7px;
@@ -36,6 +38,7 @@ const StyledTag = styled.div`
     background: #EDEDED;
     .close-icon {
       display: inline-block;
+      visibility: visible;
     }
   }
   &.invalid {
@@ -58,7 +61,6 @@ const Tag = ({name, index, valid = true, entries, setEntries}: TagProps) => {
   const removeTag = () => {
     const entriesClone = [...entries];
     entriesClone.splice(index, 1);
-    
     setEntries(entriesClone);
   }
 

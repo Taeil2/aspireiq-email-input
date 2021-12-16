@@ -12,11 +12,10 @@ const AutocompleteWrapper = styled.div`
   max-height: 261px;
   
   overflow-y: auto;
-
+  
   .entry {
     font-size: 14px;
     line-height: 24px;
-    text-align: left;
     padding: 7px 21px;
     &:hover {
       background: #EFF5F9;
@@ -37,14 +36,23 @@ interface AutocompleteProps {
   search: string;
   entries: [string, boolean][];
   setEntries: any;
+  setValue: any;
 }
 
-const Autocomplete = ({ search, entries, setEntries }: AutocompleteProps) => {
+const Autocomplete = ({ search, entries, setEntries, setValue }: AutocompleteProps) => {
+  if (search === '') {
+    return null;
+  }
+  
   const matches = emails.filter(email => email.includes(search));
-  console.log('matches', matches)
+  
+  if (!matches.length) {
+    return null;
+  }
 
   const addEmail = (match: string) => {
     setEntries([...entries, [match, 1]]);
+    setValue('');
   }
   
   return <AutocompleteWrapper>
