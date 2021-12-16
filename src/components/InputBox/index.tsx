@@ -14,6 +14,7 @@ const TextInputWrapper = styled.div`
     font-size: 14px;
     height: 50px;
     caret-color: #3996e0;
+    color: #1A1818;
     &::placeholder {
       color: #bdbdbd;
     }

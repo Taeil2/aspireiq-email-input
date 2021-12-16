@@ -15,6 +15,7 @@ const StyledTag = styled.div`
   line-height: 1em;
   margin: 14px 0;
   margin-right: 2px;
+  color: #1A1818;
 
   .close-icon {
     display: inline-block;

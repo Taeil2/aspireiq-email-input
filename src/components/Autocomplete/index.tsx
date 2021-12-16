@@ -3,9 +3,10 @@ import styled from 'styled-components'
 
 const AutocompleteWrapper = styled.div`
   background: #fdfdfd;
-  border-radius: 8px;
-  box-shadow: 0px 10px 3px rgb(0 0 0 / 2%);
-  
+  color: #1A1818;
+  box-shadow: 0px 4px 14px rgba(26, 24, 24, 0.08);
+  border-radius: 4px;
+
   position: absolute;
   background: #fdfdfd;
   width: 294px;
@@ -17,6 +18,7 @@ const AutocompleteWrapper = styled.div`
     font-size: 14px;
     line-height: 24px;
     padding: 7px 21px;
+    cursor: default;
     &:hover {
       background: #EFF5F9;
     }
