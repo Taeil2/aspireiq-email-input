@@ -1,5 +1,6 @@
-import { ReactComponent as CloseSvg } from './../../assets/close.svg';
+// import { ReactComponent as CloseSvg } from './../../assets/close.svg'; // this had some strange styling errors
 import { ReactComponent as ErrorCircleSvg } from './../../assets/error-circle.svg';
+import closeIcon from './../../assets/close.png';
 import styled from 'styled-components';
 
 const StyledTag = styled.div`
@@ -17,10 +18,10 @@ const StyledTag = styled.div`
 
   .close-icon {
     display: inline-block;
-    visibility: hidden;
+    display: none;
     position: absolute;
     right: 8px;
-    top: 7px;
+    top: 6px;
     cursor: pointer;
     width: 12px;
     height: 12px;
@@ -38,7 +39,6 @@ const StyledTag = styled.div`
     background: #EDEDED;
     .close-icon {
       display: inline-block;
-      visibility: visible;
     }
   }
   &.invalid {
@@ -67,8 +67,8 @@ const Tag = ({name, index, valid = true, entries, setEntries}: TagProps) => {
   return (
     <>
       { valid
-        ? <StyledTag>{name}<CloseSvg className="close-icon" onClick={removeTag}/></StyledTag>
-        : <StyledTag className="invalid">{name}<ErrorCircleSvg className="error-icon" /><CloseSvg className="close-icon" onClick={removeTag} /></StyledTag>
+        ? <StyledTag>{name}<img src={closeIcon} alt="remove email" className="close-icon" onClick={removeTag}/></StyledTag>
+        : <StyledTag className="invalid">{name}<ErrorCircleSvg className="error-icon" /><img src={closeIcon} alt="remove email" className="close-icon" onClick={removeTag} /></StyledTag>
       }
     </>
     );

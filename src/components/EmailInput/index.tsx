@@ -12,7 +12,7 @@ const EmailInputDiv = styled.div`
   padding: 0 13px;
 
   overflow-x: auto;
-`
+`;
 
 const EmailInput = () => {
   // entries are in the format: [ name, valid ]
